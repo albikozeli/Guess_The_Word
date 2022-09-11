@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 for (text in checkTexts) text.text = ""
                 answer.visibility = View.INVISIBLE
                 button.text = "SUBMIT"
-                wordToGuess = FourLetterWordList.getRandomFourLetterWord()
+                //wordToGuess = FourLetterWordList.getRandomFourLetterWord()
 
             }
             else if (strValue.length <4){
