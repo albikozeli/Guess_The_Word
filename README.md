@@ -34,6 +34,9 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+![walkthrough](https://user-images.githubusercontent.com/98725619/189510273-093dee4d-c5aa-4cd7-8658-a761fa292e9a.gif)
+
+
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
 <!-- Recommended tools:
