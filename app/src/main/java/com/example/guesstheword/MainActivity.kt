@@ -42,10 +42,7 @@ class MainActivity : AppCompatActivity() {
             val strValue = simpleEditText.getText().toString().uppercase()
             simpleEditText.text.clear()
 
-            if (strValue.length <4){
-                Toast.makeText(this, "Enter a 4-letter word", Toast.LENGTH_LONG).show()
-            }
-            else if (reset){
+            if (reset){
                 reset = false
                 for (text in guessTexts) text.text = ""
                 for (text in checkTexts) text.text = ""
@@ -53,6 +50,9 @@ class MainActivity : AppCompatActivity() {
                 button.text = "SUBMIT"
                 wordToGuess = FourLetterWordList.getRandomFourLetterWord()
 
+            }
+            else if (strValue.length <4){
+                Toast.makeText(this, "Enter a 4-letter word", Toast.LENGTH_LONG).show()
             }
             else{
 
@@ -62,9 +62,14 @@ class MainActivity : AppCompatActivity() {
                 checkTexts[pos].text = actual.first
                 pos++
 
-
-
-                if (actual.third or (pos==3)){
+                if (actual.third){
+                    answer.text = "CONGRATULATIONS"
+                    button.text = "RESET"
+                    answer.visibility = View.VISIBLE
+                    reset = true
+                    pos=0
+                }
+                else if (pos==3){
 
                     button.text = "RESET"
                     answer.text = "Answer:" + wordToGuess
@@ -78,13 +83,9 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * Parameters / Fields:
-     *   wordToGuess : String - the target word the user is trying to guess
      *   guess : String - what the user entered as their guess
-     *
-     * Returns a String of 'O', '+', and 'X', where:
-     *   'O' represents the right letter in the right place
-     *   '+' represents the right letter in the wrong place
-     *   'X' represents a letter not in the target word
+     *   return type: Triple with colored spannable string, number of correct
+     *   letters and boolean whether the word was guessed correctly
      */
     private fun checkGuess(guess: String) : Triple<SpannableStringBuilder,Int,Boolean> {
         var result = SpannableStringBuilder()
@@ -104,6 +105,8 @@ class MainActivity : AppCompatActivity() {
         return Triple(result, correct, correct==4)
     }
 
+    /** hides the keyboard after submitting a word
+    */
     fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(windowToken, 0)
