@@ -35,10 +35,12 @@ Here's a walkthrough of implemented user stories:
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ![walkthrough](https://user-images.githubusercontent.com/98725619/189510273-093dee4d-c5aa-4cd7-8658-a761fa292e9a.gif)
+![walkthrough-1](https://user-images.githubusercontent.com/98725619/189510430-d016a31c-f582-439f-a937-b96f6c88a983.gif)
+
 
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
+GIF created with LICEcap  
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
