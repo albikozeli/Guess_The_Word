@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val strValue = simpleEditText.getText().toString().uppercase()
             simpleEditText.text.clear()
+            it.hideKeyboard()
 
             if (reset){
                 reset = false
@@ -51,12 +52,14 @@ class MainActivity : AppCompatActivity() {
                 wordToGuess = FourLetterWordList.getRandomFourLetterWord()
 
             }
-            else if (strValue.length <4){
+            else if (strValue.length <4 ){
                 Toast.makeText(this, "Enter a 4-letter word", Toast.LENGTH_LONG).show()
+            }
+            else if(!checkalpha(strValue)){
+                Toast.makeText(this, "Only letters", Toast.LENGTH_LONG).show()
             }
             else{
 
-                it.hideKeyboard()
                 guessTexts[pos].text = strValue
                 val actual = checkGuess(strValue)
                 checkTexts[pos].text = actual.first
@@ -110,5 +113,13 @@ class MainActivity : AppCompatActivity() {
     fun View.hideKeyboard() {
         val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+    fun checkalpha(str:String):Boolean{
+        var ret = true
+        for (letter in str){
+            ret = ret && letter.isLetter()
+        }
+        return ret
     }
 }
